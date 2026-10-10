@@ -91,9 +91,16 @@ composer quality:check  # phpstan + cs:check + test
 - **Uma ferramenta de estilo**: PHPCS (`phpcs`/`phpcbf`, standard PSR-12). Não adicionar
   php-cs-fixer.
 
+## Domínio de testes (SPEC-094)
+
+- O `pivotphp-http` é o **dono do domínio HTTP**: mensagens PSR-7, fachadas `ExpressRequest`/`ExpressResponse`,
+  parsing de body (`BodyParser`), emissão SAPI (`SapiEmitter`) e factories PSR-17.
+- Todas as asserções de detalhes de mensagem HTTP, headers, cookies, content negotiation e body parsing
+  pertencem a este pacote. O `pivotphp-core` apenas testa a integração e o wiring do framework.
+
 ## Versionamento
 
-- **Versão atual**: 1.0.0
+- **Versão atual**: 1.0.1
 - **PHP**: 8.1+
 - **Licença**: MIT
 

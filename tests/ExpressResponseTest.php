@@ -26,6 +26,22 @@ class ExpressResponseTest extends TestCase
         $this->assertSame('{"ok":true}', (string) $result->getBody());
     }
 
+    public function testJsonHonoursFlags(): void
+    {
+        $result = (new ExpressResponse())->json(
+            ['url' => 'https://example.com/path', 'emoji' => '🚀'],
+            null,
+            JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
+        );
+
+        $body = (string) $result->getBody();
+
+        $this->assertStringContainsString('https://example.com/path', $body);
+        $this->assertStringContainsString('🚀', $body);
+        $this->assertStringNotContainsString('\\/', $body);
+        $this->assertStringNotContainsString('\\u', $body);
+    }
+
     public function testStatusAccumulatesIntoJson(): void
     {
         $result = (new ExpressResponse())->status(404)->json(['error' => 'nope']);

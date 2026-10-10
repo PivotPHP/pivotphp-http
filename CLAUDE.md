@@ -43,7 +43,7 @@ pivotphp-http/
 
 ```bash
 composer test           # PHPUnit
-composer phpstan        # PHPStan nível 8 (phpstan analyse src --level=8)
+composer phpstan        # PHPStan nível 9 (phpstan analyse src --level=9)
 composer cs:check       # PSR-12 (phpcs --standard=PSR12 src tests)
 composer cs:fix         # Auto-correção
 composer quality:check  # phpstan + cs:check + test
@@ -86,7 +86,7 @@ composer quality:check  # phpstan + cs:check + test
 
 ## Convenções
 
-- `declare(strict_types=1)`, PSR-12, PHPStan nível 8 (tolerância zero).
+- `declare(strict_types=1)`, PSR-12, PHPStan nível 9 (tolerância zero).
 - Value types em `array<...>` são recomendados (documentação), mas o nível 8 não os exige.
 - **Uma ferramenta de estilo**: PHPCS (`phpcs`/`phpcbf`, standard PSR-12). Não adicionar
   php-cs-fixer.

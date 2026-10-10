@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2026-10-10
+
+### Fixed
+
+- Documentation: `README.md` previously described `ExpressRequest::input()` as reading the parsed body,
+  then JSON body, then query string; corrected to parsed body then query string (matching the code and docblock).
+
+### Added
+
+- Packaging: `.gitattributes` with `export-ignore` for dev/test assets in distribution archives (SPEC-100).
+
+### Changed
+
+- Static analysis: raised PHPStan configuration and scripts to level 9 (`--level=9`) with zero errors.
+
 ## [1.0.0] - 2026-10-10
 
 ### Added

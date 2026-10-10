@@ -38,7 +38,7 @@ $app->get('/api/users/:id', function ($req, $res) {
   no body on `HEAD`).
 - **`Factory\Psr17Factory`** / **`Factory\ServerRequestFactory`** — PSR-17 and
   `fromGlobals()`/`fromArrays()`.
-- **Type safety**: strict typing, PHPStan level 8.
+- **Type safety**: strict typing, PHPStan level 9.
 
 ## Installation
 
@@ -59,7 +59,7 @@ use PivotPHP\Http\ExpressRequest;
 $id     = $req->param('id');            // route parameter
 $all    = $req->params();              // all route parameters
 $page   = $req->query('page', '1');    // query string
-$name   = $req->input('name');         // parsed body, then JSON body, then query
+$name   = $req->input('name');         // parsed body, then query string
 $data   = $req->json();                // decoded JSON body (array)
 $token  = $req->header('Authorization');
 $secure = $req->isSecure();
@@ -118,7 +118,7 @@ for `HEAD` and body-less statuses (`1xx`, `204`, `304`), and sets `Content-Lengt
 | `params(): array` | All matched route parameters. |
 | `param(string $name, mixed $default = null)` | Route parameter. |
 | `query(string $name, mixed $default = null)` | Query-string value. |
-| `input(string $name, mixed $default = null)` | Parsed body, then JSON body, then query string. |
+| `input(string $name, mixed $default = null)` | Parsed body, then query string. |
 | `json(): array` | Decoded JSON body; throws `MalformedJsonException` on malformed input. |
 | `header(string $name, ?string $default = null)` | Header line. |
 | `cookie(string $name, ?string $default = null)` | Cookie value. |
@@ -168,7 +168,7 @@ The factory only builds the request; body parsing is done by `BodyParsingMiddlew
 
 ```bash
 composer test           # PHPUnit
-composer phpstan        # Static analysis (level 8)
+composer phpstan        # Static analysis (level 9)
 composer cs:check       # PSR-12 style check
 composer quality:check  # phpstan + cs:check + test
 ```
